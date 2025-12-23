@@ -7,7 +7,9 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		double rendAnual, rendMensal, rendPrestServ, rendGanhCapit, gastMedc, gastEduc, impostSalario, impostPrestServ, impostGanCapital;
+		double rendAnual, rendMensal, rendPrestServ, rendGanhCapit, gastMedc, 
+		gastEduc, impostSalario, impostPrestServ, impostGanCapital, impostBrtT, gastDedu, 
+		maxDedu, abatimento, impostoDevido;
 
 		System.out.printf("Renda anual com salário: ");
 		rendAnual = sc.nextDouble();
@@ -31,6 +33,7 @@ public class Main {
 		System.out.println("CONSOLIDADO DE RENDA");
 
 		rendMensal = rendAnual / 12;
+        impostSalario = 0;
 
 		if (rendMensal < 3000) {
 			impostSalario = 0;
@@ -57,6 +60,26 @@ public class Main {
 
 		else {
 			impostGanCapital = 0;
+		}
+		
+		
+		impostBrtT = impostSalario + impostPrestServ + impostGanCapital;
+		
+		gastDedu = gastMedc + gastEduc;
+		maxDedu = impostBrtT * 30 / 100;
+		
+		
+		if (maxDedu < gastDedu) {
+			abatimento = maxDedu;
+			impostoDevido = impostBrtT - abatimento;
+		}
+		
+		else {
+			
+			abatimento = gastDedu;
+			impostoDevido = impostBrtT - abatimento;
+			
+			
 		}
 
 	}
