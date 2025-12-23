@@ -7,43 +7,57 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		double rendAnual, rendMensal, rendPrestServ, rendGanhCapit, gastMedc, gastEduc, impostSalario;
+		double rendAnual, rendMensal, rendPrestServ, rendGanhCapit, gastMedc, gastEduc, impostSalario, impostPrestServ, impostGanCapital;
 
 		System.out.printf("Renda anual com salário: ");
 		rendAnual = sc.nextDouble();
-		
+
 		System.out.printf("Renda anual com prestação de serviço: ");
 		rendPrestServ = sc.nextDouble();
-		
-		
+
 		System.out.println("Renda anual com ganho de capital:");
 		rendGanhCapit = sc.nextDouble();
-		
+
 		System.out.printf("Gastos médicos: ");
 		gastMedc = sc.nextDouble();
-		
+
 		System.out.println("Gastos educacionais:");
 		gastEduc = sc.nextDouble();
-		
+
 		System.out.println();
 		System.out.println("RELATÓRIO DE IMPOSTO DE RENDA ");
 		System.out.println();
-		
-		
+
 		System.out.println("CONSOLIDADO DE RENDA");
-		
-		
-		
+
 		rendMensal = rendAnual / 12;
-		
-		
-		if(rendMensal < 3000) {
+
+		if (rendMensal < 3000) {
 			impostSalario = 0;
 		}
-		
-		
-		
-		
+
+		else if (rendMensal == 3000 || rendMensal < 5000) {
+			impostSalario = rendAnual * 10 / 100;
+
+		} else if (rendMensal >= 5000) {
+			impostSalario = rendAnual * 20 / 100;
+		}
+
+		if (rendPrestServ > 0) {
+			impostPrestServ = rendPrestServ * 15 / 100;
+		}
+
+		else {
+			impostPrestServ = 0;
+		}
+
+		if (rendGanhCapit > 0) {
+			impostGanCapital = rendGanhCapit * 20 / 100;
+		}
+
+		else {
+			impostGanCapital = 0;
+		}
 
 	}
 
